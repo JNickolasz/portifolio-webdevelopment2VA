@@ -1,0 +1,73 @@
+.secao h3 {
+  color: #f1f5f9;
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.contato-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.contato-form p {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.contato-form label {
+  font-weight: 600;
+  color: #a78bfa;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.contato-form input,
+.contato-form textarea {
+  width: 100%;
+  padding: 12px 16px;
+  background: rgba(11, 15, 25, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  color: #f1f5f9;
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition: all 0.25s ease;
+}
+
+.contato-form input:focus,
+.contato-form textarea:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
+  background: rgba(11, 15, 25, 0.7);
+}
+
+.contato-form textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.btn-submit {
+  background-color: var(--accent-color);
+  border: none;
+  padding: 12px 24px;
+  border-radius: 12px;
+  color: white;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.2);
+  align-self: flex-start;
+  margin-top: 0.5rem;
+}
+
+.btn-submit:hover {
+  background-color: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(139, 92, 246, 0.35);
+}

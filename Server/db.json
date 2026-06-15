@@ -1,0 +1,622 @@
+[
+{
+  "model": "auth.permission",
+  "pk": 1,
+  "fields": {
+    "name": "Can add log entry",
+    "content_type": 1,
+    "codename": "add_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 2,
+  "fields": {
+    "name": "Can change log entry",
+    "content_type": 1,
+    "codename": "change_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 3,
+  "fields": {
+    "name": "Can delete log entry",
+    "content_type": 1,
+    "codename": "delete_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 4,
+  "fields": {
+    "name": "Can view log entry",
+    "content_type": 1,
+    "codename": "view_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 5,
+  "fields": {
+    "name": "Can add permission",
+    "content_type": 3,
+    "codename": "add_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 6,
+  "fields": {
+    "name": "Can change permission",
+    "content_type": 3,
+    "codename": "change_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 7,
+  "fields": {
+    "name": "Can delete permission",
+    "content_type": 3,
+    "codename": "delete_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 8,
+  "fields": {
+    "name": "Can view permission",
+    "content_type": 3,
+    "codename": "view_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 9,
+  "fields": {
+    "name": "Can add group",
+    "content_type": 2,
+    "codename": "add_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 10,
+  "fields": {
+    "name": "Can change group",
+    "content_type": 2,
+    "codename": "change_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 11,
+  "fields": {
+    "name": "Can delete group",
+    "content_type": 2,
+    "codename": "delete_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 12,
+  "fields": {
+    "name": "Can view group",
+    "content_type": 2,
+    "codename": "view_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 13,
+  "fields": {
+    "name": "Can add user",
+    "content_type": 4,
+    "codename": "add_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 14,
+  "fields": {
+    "name": "Can change user",
+    "content_type": 4,
+    "codename": "change_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 15,
+  "fields": {
+    "name": "Can delete user",
+    "content_type": 4,
+    "codename": "delete_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 16,
+  "fields": {
+    "name": "Can view user",
+    "content_type": 4,
+    "codename": "view_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 17,
+  "fields": {
+    "name": "Can add content type",
+    "content_type": 5,
+    "codename": "add_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 18,
+  "fields": {
+    "name": "Can change content type",
+    "content_type": 5,
+    "codename": "change_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 19,
+  "fields": {
+    "name": "Can delete content type",
+    "content_type": 5,
+    "codename": "delete_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 20,
+  "fields": {
+    "name": "Can view content type",
+    "content_type": 5,
+    "codename": "view_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 21,
+  "fields": {
+    "name": "Can add session",
+    "content_type": 6,
+    "codename": "add_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 22,
+  "fields": {
+    "name": "Can change session",
+    "content_type": 6,
+    "codename": "change_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 23,
+  "fields": {
+    "name": "Can delete session",
+    "content_type": 6,
+    "codename": "delete_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 24,
+  "fields": {
+    "name": "Can view session",
+    "content_type": 6,
+    "codename": "view_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 25,
+  "fields": {
+    "name": "Can add Perfil Pessoal",
+    "content_type": 7,
+    "codename": "add_pessoal"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 26,
+  "fields": {
+    "name": "Can change Perfil Pessoal",
+    "content_type": 7,
+    "codename": "change_pessoal"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 27,
+  "fields": {
+    "name": "Can delete Perfil Pessoal",
+    "content_type": 7,
+    "codename": "delete_pessoal"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 28,
+  "fields": {
+    "name": "Can view Perfil Pessoal",
+    "content_type": 7,
+    "codename": "view_pessoal"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 29,
+  "fields": {
+    "name": "Can add certificado",
+    "content_type": 8,
+    "codename": "add_certificado"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 30,
+  "fields": {
+    "name": "Can change certificado",
+    "content_type": 8,
+    "codename": "change_certificado"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 31,
+  "fields": {
+    "name": "Can delete certificado",
+    "content_type": 8,
+    "codename": "delete_certificado"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 32,
+  "fields": {
+    "name": "Can view certificado",
+    "content_type": 8,
+    "codename": "view_certificado"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 33,
+  "fields": {
+    "name": "Can add projeto",
+    "content_type": 9,
+    "codename": "add_projeto"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 34,
+  "fields": {
+    "name": "Can change projeto",
+    "content_type": 9,
+    "codename": "change_projeto"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 35,
+  "fields": {
+    "name": "Can delete projeto",
+    "content_type": 9,
+    "codename": "delete_projeto"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 36,
+  "fields": {
+    "name": "Can view projeto",
+    "content_type": 9,
+    "codename": "view_projeto"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 37,
+  "fields": {
+    "name": "Can add tecnologia",
+    "content_type": 10,
+    "codename": "add_tecnologia"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 38,
+  "fields": {
+    "name": "Can change tecnologia",
+    "content_type": 10,
+    "codename": "change_tecnologia"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 39,
+  "fields": {
+    "name": "Can delete tecnologia",
+    "content_type": 10,
+    "codename": "delete_tecnologia"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 40,
+  "fields": {
+    "name": "Can view tecnologia",
+    "content_type": 10,
+    "codename": "view_tecnologia"
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$IvOUoKdq7E3FXm1pA9bahH$KQnupMcWLCzSsakITNx3F4JpLE33WNW2XYZKTZTr1vE=",
+    "last_login": null,
+    "is_superuser": true,
+    "username": "josenickolas",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-05-11T18:23:27.256Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 1,
+  "fields": {
+    "app_label": "admin",
+    "model": "logentry"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 2,
+  "fields": {
+    "app_label": "auth",
+    "model": "group"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 3,
+  "fields": {
+    "app_label": "auth",
+    "model": "permission"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 4,
+  "fields": {
+    "app_label": "auth",
+    "model": "user"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 5,
+  "fields": {
+    "app_label": "contenttypes",
+    "model": "contenttype"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 6,
+  "fields": {
+    "app_label": "sessions",
+    "model": "session"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 7,
+  "fields": {
+    "app_label": "core",
+    "model": "pessoal"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 8,
+  "fields": {
+    "app_label": "portifolio",
+    "model": "certificado"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 9,
+  "fields": {
+    "app_label": "portifolio",
+    "model": "projeto"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 10,
+  "fields": {
+    "app_label": "portifolio",
+    "model": "tecnologia"
+  }
+},
+{
+  "model": "core.pessoal",
+  "pk": 1,
+  "fields": {
+    "usuario": 1,
+    "nome": "José Nickolas de Oliveira Paiva",
+    "idade": 20,
+    "descricao": "Olá! Me chamo Jośe Nickolas de Oliveira Paiva e estou cursando Sistemas de Informação pela Universidade Federal Rural de Pernambuco (UFRPE - UAST), onde desenvolvo uma base sólida voltada para a tecnologia e a resolução de problemas estruturados. Atualmente, direciono meus estudos e projetos para as áreas de desenvolvimento web, modelagem de dados, ciência e manipulação de dados, além de ser um entusiasta da contribuição em projetos open source. Acredito que a eficiência de um sistema nasce da união entre uma arquitetura de dados bem planejada e uma implementação metódica. Sou movido pelo aprendizado contínuo e pela disciplina, buscando sempre aplicar uma abordagem organizada e detalhista em cada desafio técnico que assumo, garantindo que as soluções sejam não apenas funcionais, mas também bem documentadas e escaláveis.",
+    "curso": "Sistema de Informação",
+    "periodo": "4°",
+    "email": "jose.nickolas.bsi@gmail.com",
+    "git": "https://github.com/JNickolasz",
+    "linked": "https://www.linkedin.com/in/nickolas-paiva-a83bb7348/",
+    "url_imagem": "https://res.cloudinary.com/df71upmwu/image/upload/v1/media/fotos/imagem-me-portifolio-web_ffhmje"
+  }
+},
+{
+  "model": "portifolio.projeto",
+  "pk": 1,
+  "fields": {
+    "titulo": "AgendEasy",
+    "descricao": "Este sistema de agendamento de salas foi criado durante um bootcamp intensivo em 2025, com o objetivo de resolver desafios reais de logística e disponibilidade. No desenvolvimento, priorizei a segurança através de autenticação com JWT e bcrypt, além de estruturar toda a lógica necessária para o agendamento dinâmico atendendo a diversos critérios de reserva. O projeto representou um salto importante na minha curva de aprendizado, transformando conceitos complexos em competências fundamentais do meu stack atual. Infelizmente devido a rotina corrida e a falta de tempo não consegui finalizar da melhor forma o projeto, onde o mesmo ainda conta com alguns bugs. Durante o desenvolvimento, o foco principal foi a estruturação e o planejamento arquitetural. Realizei toda a modelagem de dados e o mapeamento dos relacionamentos entre entidades e serviços utilizando o Excalidraw. Esse processo reforçou minha visão sobre a importância do planejamento prévio para a escalabilidade de um sistema. Além da modelagem, o projeto foi um laboratório prático onde implementei e consolidei conhecimentos em ferramentas fundamentais para o mercado, incluindo Swagger para documentação, Postman para testes de API, estilização com Tailwind CSS e uso de diversas bibliotecas do ecossistema JavaScript.",
+    "tipo": "Pessoal",
+    "link_git": "https://github.com/JNickolasz/ReservaSalasBootcamp",
+    "tecnologias": [
+      3,
+      5,
+      7,
+      9,
+      10,
+      11,
+      13,
+      16
+    ]
+  }
+},
+{
+  "model": "portifolio.certificado",
+  "pk": 2,
+  "fields": {
+    "descricao": "Durante o JATIv26 na UAST-UFRPE, participei do mini-curso de versionamento de Git e GitHub ministrado por Klayvert. Nele aprimorei meus conhecimentos sobre essas ferramentas que são fundamentais no desenvolvimento de grandes aplicações e sites."
+  }
+},
+{
+  "model": "portifolio.certificado",
+  "pk": 3,
+  "fields": {
+    "descricao": "Participação na Imersão Dev (9ª Edição) promovida pela Alura, com carga horária de 20 horas. Desenvolvimento prático de projetos utilizando HTML, CSS e JavaScript puro, abordando lógica de programação, manipulação de elementos na tela (DOM), consumo de APIs e publicação de aplicações web."
+  }
+},
+{
+  "model": "portifolio.tecnologia",
+  "pk": 1,
+  "fields": {
+    "nome": "Pyton",
+    "url_icone": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
+  }
+},
+{
+  "model": "portifolio.tecnologia",
+  "pk": 2,
+  "fields": {
+    "nome": "Django",
+    "url_icone": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg"
+  }
+},
+{
+  "model": "portifolio.tecnologia",
+  "pk": 3,
+  "fields": {
+    "nome": "JavaScript",
+    "url_icone": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+  }
+},
+{
+  "model": "portifolio.tecnologia",
+  "pk": 4,
+  "fields": {
+    "nome": "TypeScript",
+    "url_icone": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
+  }
+},
+{
+  "model": "portifolio.tecnologia",
+  "pk": 5,
+  "fields": {
+    "nome": "React",
+    "url_icone": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
+  }
+},
+{
+  "model": "portifolio.tecnologia",
+  "pk": 6,
+  "fields": {
+    "nome": "Next.js",
+    "url_icone": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg"
+  }
+},
+{
+  "model": "portifolio.tecnologia",
+  "pk": 7,
+  "fields": {
+    "nome": "Node.js",
+    "url_icone": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
+  }
+},
+{
+  "model": "portifolio.tecnologia",
+  "pk": 9,
+  "fields": {
+    "nome": "Tailwind",
+    "url_icone": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg"
+  }
+},
+{
+  "model": "portifolio.tecnologia",
+  "pk": 10,
+  "fields": {
+    "nome": "Git",
+    "url_icone": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
+  }
+},
+{
+  "model": "portifolio.tecnologia",
+  "pk": 11,
+  "fields": {
+    "nome": "GitHub",
+    "url_icone": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
+  }
+},
+{
+  "model": "portifolio.tecnologia",
+  "pk": 12,
+  "fields": {
+    "nome": "MongoDB",
+    "url_icone": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"
+  }
+},
+{
+  "model": "portifolio.tecnologia",
+  "pk": 13,
+  "fields": {
+    "nome": "PostgreSQL",
+    "url_icone": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"
+  }
+},
+{
+  "model": "portifolio.tecnologia",
+  "pk": 14,
+  "fields": {
+    "nome": "Go",
+    "url_icone": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/go/go-original-wordmark.svg"
+  }
+},
+{
+  "model": "portifolio.tecnologia",
+  "pk": 16,
+  "fields": {
+    "nome": "Express.js",
+    "url_icone": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg"
+  }
+}
+]

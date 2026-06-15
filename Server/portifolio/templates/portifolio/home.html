@@ -1,0 +1,93 @@
+{% extends 'core/base.html' %} 
+{% load static %}
+
+{% block title %} Início - Meu Portifólio {% endblock %} 
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'portifolio/css/home.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="secao card">
+  <h3>
+    Tecnologias
+    <a href="#" id="btn-add-tecnologias" class="admin-only" style="margin-left: 10px; color: var(--accent-color); font-size: 1.1rem; cursor: pointer; vertical-align: middle;">
+      <i class="fa-solid fa-plus"></i>
+    </a>
+  </h3>
+  <div class="tecnologias-grid">
+    {% for tecnologia in tecnologias %}
+    <div class="tech-item" style="position: relative;">
+      <a href="#" class="btn-delete-tecnologia admin-only" data-id="{{ tecnologia.id }}" style="position: absolute; top: 5px; right: 5px; color: #ef4444; font-size: 0.9rem; cursor: pointer; background: rgba(15, 23, 42, 0.8); border-radius: 50%; padding: 2px;">
+        <i class="fa-solid fa-circle-xmark"></i>
+      </a>
+      <img src="{{tecnologia.url_icone}}" alt="{{tecnologia.nome}}" width="50" height="50">
+      <span class="tech-name">{{tecnologia.nome}}</span>
+    </div>
+    {% empty %}
+    <p>Nenhuma tecnologia foi cadastrada ainda.</p>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="secao card">
+  <h3>
+    Dados Pessoais
+    <a href="#" id="btn-edit-dados" class="admin-only" style="margin-left: 10px; color: var(--accent-color); font-size: 1.1rem; cursor: pointer; vertical-align: middle;">
+      <i class="fa-solid fa-pencil"></i>
+    </a>
+  </h3>
+  <ul class="info-list">
+    <li class="info-item">
+      <span class="info-label" style="color: --accent-color">Nome: </span>
+      <span class="info-value">{{dados.nome}}</span>
+    </li>
+    <li class="info-item">
+      <span class="info-label" style="color: --accent-color">Idade: </span>
+      <span class="info-value">{{dados.idade}}</span>
+    </li>
+    <li class="info-item">
+      <span class="info-label" style="color: --accent-color">Curso: </span>
+      <span class="info-value">{{dados.curso}}</span>
+    </li>
+    <li class="info-item">
+      <span class="info-label" style="color: --accent-color">Período: </span>
+      <span class="info-value">{{dados.periodo}}</span>
+    </li>
+  </ul>
+</div>
+
+<div class="secao card">
+  <h3>
+    Cursos e Certificados
+    <a href="#" id="btn-add-certificado" class="admin-only" style="margin-left: 10px; color: var(--accent-color); font-size: 1.1rem; cursor: pointer; vertical-align: middle;">
+      <i class="fa-solid fa-plus"></i>
+    </a>
+  </h3>
+  <div class="certs-grid">
+    {% for certificado in certificados %}
+      <div class="cert-card" style="position: relative;">
+        <!-- <h4>{{certificado.nome_curso}}</h4> -->
+        <ul class="cert-info">
+          <a href="#" class="btn-delete-certificado admin-only" data-id="{{ certificado.id }}" style="position: absolute; top: 5px; right: 5px; color: #ef4444; font-size: 0.9rem; cursor: pointer; background: rgba(15, 23, 42, 0.8); border-radius: 50%; padding: 2px;">
+            <i class="fa-solid fa-circle-xmark"></i>
+          </a>
+          <!-- <li><strong>Empresa:</strong> {{certificado.empresa}}</li> -->
+
+          <!-- Lembrando q foi pq heldon mandou criar o model de curso só com a coluna de descrição... -->
+          {% if certificado.descricao %}<li><strong>Descrição:</strong> {{certificado.descricao}}</li>{% endif %}
+          
+          <!-- <li><strong>Duração:</strong> {{certificado.duracao}}</li> -->
+          <!-- {% if certificado.link_certificado %}
+          <li><strong>Certificado:</strong> <a href="{{certificado.link_certificado}}" style="text-decoration: none; color: var(--accent-color);" target="_blank">Ver certificado</a></li>
+          {% endif %} -->
+        </ul>
+      </div>
+    {% empty %}
+      <p>Nenhum curso foi cadastrado ainda.</p>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

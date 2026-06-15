@@ -1,0 +1,277 @@
+{% load static %}
+<!doctype html>
+<style>html { scroll-behavior: smooth; }</style>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Meu Portfólio{% endblock %}</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="icon" type="image/png" href="{% static 'core/favicon.ico' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+    {% block extra_css %}{% endblock %}
+  </head>
+  <body>
+    <div class="ambient-glow glow-1"></div>
+    <div class="ambient-glow glow-2"></div>
+    <header class="header-nav">
+      <div class="nav-container">
+        <h1>{% block header_title %}Meu Portfólio{% endblock %}</h1>
+        <nav>
+          <a href="{% url 'portifolio:home' %}" class="portifolio-button">
+            <span class="nav-text">Início</span>
+            <i data-lucide="house" class="nav-icon"></i>
+          </a>
+          <a href="{% url 'portifolio:projetos' %}" class="projetos-button">
+            <span class="nav-text">Projetos</span>
+            <i data-lucide="folder" class="nav-icon"></i>  
+          </a>
+          <a href="{% url 'portifolio:contato' %}" class="contato-button">
+            <span class="nav-text">Contato</span>
+            <i data-lucide="mail" class="nav-icon"></i>  
+          </a>
+
+          <!--NOTIFICAÇÕES-->
+          <div class="notification-container admin-only" id="notification-container" style="display: none;">
+            <button id="notification-bell" class="notification-bell-btn" title="Notificações">
+              <i data-lucide="bell" class="nav-icon"></i>
+              <span id="notification-badge" class="notification-badge">
+                0
+              </span>
+            </button>
+          </div>
+
+          <div id="notification-dropdown" class="notification-dropdown">
+            <div class="notification-header">
+              <h3>Notificações</h3>
+            </div>
+            <div class="notification-list" id="notification-list">
+              <p class="notification-empty">Nenhuma notificação</p>
+            </div>
+          </div>
+          <!-- -=-=-=-=-=- -->
+
+          <a href="#" id="edit-button" class="admin-only" style="cursor: pointer; color: #ef4444; font-weight: 600; display: none;">Sair</a>
+        </nav>
+      </div>
+    </header>
+    <main class="main-content">
+      <div class="content-container">
+        {% if request.resolver_match.url_name != 'login' %}
+        <aside class="perfil-container card">
+          <div class="perfil-header">
+            <div class="profile-avatar-container">
+              <img
+                src="{{ dados.url_imagem|default:'https://via.placeholder.com/220' }}"
+                alt="foto do aluno"
+                id="perfil-avatar-img"
+              />
+              <div id="btn-edit-foto" class="avatar-edit-overlay admin-only">
+                <i class="fa-solid fa-camera"></i>
+              </div>
+            </div>
+            <h2>{{dados.nome_social}}</h2>
+            <p>{{dados.curso}} - {{dados.periodo}}</p>
+          </div>
+          <div class="perfil-sobre" style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255, 255, 255, 0.08); text-align: left; width: 100%;">
+            <h4 style="color: #f1f5f9; font-size: 1.1rem; font-weight: 700; margin: 0 0 0.8rem 0;">
+              Sobre Mim
+              <a href="#" id="btn-edit-sobre" class="admin-only" style="color: var(--accent-color); font-size: 0.95rem; cursor: pointer; margin-left: 10px; vertical-align: middle;">
+                <i class="fa-solid fa-pencil"></i>
+              </a>
+            </h4>
+            <p style="font-size: 0.9rem; color: #94a3b8; line-height: 1.6; word-wrap: break-word; overflow-wrap: anywhere;">
+              {{dados.descricao}}
+            </p>
+          </div>
+        </aside>
+        {% endif %}
+        <div class="info-container">
+          {% if messages %}
+            {% for message in messages %}
+              <div class="popup-overlay" id="popup">
+                <div class="popup-box">
+                  <p>{{ message }}</p>
+                  <button onclick="document.getElementById('popup').style.display='none'">Cancelar</button>
+                </div>
+              </div>
+            {% endfor %}
+{% endif %}
+          {% block content %}{% endblock %}
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 - Portfólio Acadêmico | UAST</p>
+    </footer>
+
+    <!-- Modal Editar Sobre -->
+    <div id="sobre-modal" class="popup-overlay" style="display: none;">
+      <div class="popup-box popup-medium">
+        <h3>Editar Sobre</h3>
+        <div class="form-group">
+          <label for="txt-sobre-mim">Sobre mim:</label>
+          <textarea id="txt-sobre-mim" rows="4"></textarea>
+        </div>
+        <div class="form-actions">
+          <button id="btn-salvar-sobre">Salvar</button>
+          <button id="btn-cancelar-sobre" class="btn-cancel">Cancelar</button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Modal Adicionar Tecnologia -->
+    <div id="tech-modal" class="popup-overlay" style="display: none;">
+      <div class="popup-box popup-medium">
+        <h3>Nova Tecnologia</h3>
+        <div class="form-group">
+          <label for="tech-nome">Nome da Tecnologia:</label>
+          <input type="text" id="tech-nome">
+        </div>
+        <div class="form-group">
+          <label for="tech-url">URL do Ícone (Ex: Devicon):</label>
+          <input type="url" id="tech-url">
+        </div>
+        <div class="form-actions">
+          <button id="btn-salvar-tech">Adicionar</button>
+          <button id="btn-cancelar-tech" class="btn-cancel">Cancelar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Editar Dados -->
+    <div id="dados-modal" class="popup-overlay" style="display: none;">
+      <div class="popup-box popup-medium">
+        <h3>Editar Dados Pessoais</h3>
+        <div class="form-group">
+          <label for="txt-nome">Nome:</label>
+          <input type="text" id="txt-nome">
+        </div>
+        <div class="form-group">
+          <label for="txt-idade">Idade:</label>
+          <input type="text" id="txt-idade">
+        </div>
+        <div class="form-group">
+          <label for="txt-curso">Curso:</label>
+          <input type="text" id="txt-curso">
+        </div>
+        <div class="form-group">
+          <label for="txt-periodo">Período:</label>
+          <input type="text" id="txt-periodo">
+        </div>
+        <div class="form-actions">
+          <button id="btn-salvar-dados">Salvar</button>
+          <button id="btn-cancelar-dados" class="btn-cancel">Cancelar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Adicionar Certificado -->
+    <div id="cert-modal" class="popup-overlay" style="display: none;">
+      <div class="popup-box popup-medium">
+        <h3>Novo Certificado</h3>
+        <div class="form-group">
+          <label for="cert-descricao">Descrição do Certificado:</label>
+          <textarea id="cert-descricao" rows="4"></textarea>
+        </div>
+        <div class="form-actions">
+          <button id="btn-salvar-cert">Adicionar</button>
+          <button id="btn-cancelar-cert" class="btn-cancel">Cancelar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Adicionar Projeto -->
+    <div id="proj-modal" class="popup-overlay" style="display: none;">
+      <div class="popup-box popup-large">
+        <h3>Novo Projeto</h3>
+        <div class="form-group">
+          <label for="proj-titulo">Título do Projeto:</label>
+          <input type="text" id="proj-titulo">
+        </div>
+        <div class="form-group">
+          <label for="proj-descricao">Descrição:</label>
+          <textarea id="proj-descricao" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="proj-tipo">Tipo de Projeto:</label>
+          <select id="proj-tipo">
+            <option value="Pessoal">Projeto Pessoal</option>
+            <option value="Acadêmico">Projeto Acadêmico</option>
+            <option value="Profissional">Projeto Profissional</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="proj-link">Link do Git (URL):</label>
+          <input type="url" id="proj-link">
+        </div>
+        
+        <div class="form-group">
+          <label>Tecnologias Utilizadas:</label>
+          <div id="proj-techs-container" class="tech-select-grid">
+            <p class="loading-text">Carregando tecnologias...</p>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button id="btn-salvar-proj">Adicionar</button>
+          <button id="btn-cancelar-proj" class="btn-cancel">Cancelar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Alterar Foto de Perfil -->
+    <div id="foto-modal" class="popup-overlay" style="display: none;">
+      <div class="popup-box popup-medium">
+        <h3>Alterar Foto de Perfil</h3>
+        <div class="form-group">
+          <label for="foto-url">URL da Nova Imagem:</label>
+          <input type="url" id="foto-url">
+        </div>
+        <div class="form-actions">
+          <button id="btn-salvar-foto">Salvar</button>
+          <button id="btn-cancelar-foto" class="btn-cancel">Cancelar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Confirmação de Exclusão -->
+    <div id="confirm-modal" class="popup-overlay" style="display: none;">
+      <div class="popup-box" style="max-width: 380px;">
+        <h3 id="confirm-title" style="text-align: center; background: linear-gradient(135deg, #ffffff 0%, #f43f5e 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">Confirmar Exclusão</h3>
+        <p id="confirm-message" style="text-align: center; color: #cbd5e1; font-size: 0.95rem; margin-top: 5px;"></p>
+        <div class="form-actions" style="justify-content: center; margin-top: 10px;">
+          <button id="btn-confirm-yes" style="background: #ef4444 !important; box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2) !important;">Excluir</button>
+          <button id="btn-confirm-no" class="btn-cancel">Cancelar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feedback Toast -->
+    <div id="feedback-toast" class="feedback-toast" style="display: none;">
+      <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 0 !important;">
+        <i id="feedback-icon" class="fa-solid" style="font-size: 1.15rem;"></i>
+        <span id="feedback-message" style="font-size: 0.95rem; font-weight: 500;"></span>
+      </div>
+    </div>
+    
+    <script>lucide.createIcons();</script>
+    <script>
+      window.NOTIFICACAO_CONFIG = {
+        msUrl: "{{ NOTIFICACAO_MS_URL }}",
+        apiKey: "{{ NOTIFICACAO_MS_API_KEY }}"
+      };
+    </script>
+    <script src="{% static 'portifolio/js/notificacoes.js' %}"></script>
+    <script src="{% static 'portifolio/js/perfil.js' %}"></script>
+    <script src="{% static 'portifolio/js/gerenciar_itens.js' %}"></script>
+  </body>
+</html>

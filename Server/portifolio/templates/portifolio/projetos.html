@@ -1,0 +1,45 @@
+{% extends 'core/base.html' %} 
+{% load static %}
+
+{% block title %} Projetos - Meus Projetos {%endblock %} 
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'portifolio/css/projetos.css' %}">
+{% endblock %} 
+
+{% block content %}
+<div class="secao card">
+  <h3>
+    Meus Projetos
+    <a href="#" id="btn-add-proj" class="admin-only" style="margin-left: 10px; color: var(--accent-color); font-size: 1.1rem; cursor: pointer; vertical-align: middle;">
+      <i class="fa-solid fa-plus"></i>
+    </a>
+  </h3>
+  <div class="projects-grid">
+    {% for projeto in projetos %}
+      <div class="project-card" style="position: relative;">
+        <a href="#" class="btn-delete-proj admin-only" data-id="{{ projeto.id }}" style="position: absolute; top: 15px; right: 15px; color: #ef4444; font-size: 1.1rem; cursor: pointer;">
+          <i class="fa-solid fa-trash"></i>
+        </a>
+        <h3>{{projeto.titulo}}</h3>
+        <ul class="project-info">
+          <li><strong>Descrição: </strong>{{projeto.descricao}}</li>
+          <li>
+            <strong>Tecnologias: </strong>
+            <span style="display: inline-flex; gap: 8px; align-items: center; vertical-align: middle; margin-left: 5px;">
+              {% for tech in projeto.tecnologias.all %}
+                <img src="{{ tech.url_icone }}" alt="{{ tech.nome }}" title="{{ tech.nome }}" width="22" height="22" style="object-fit: contain;">
+              {% empty %}
+                <span style="color: #64748b; font-size: 0.9rem;">Nenhuma</span>
+              {% endfor %}
+            </span>
+          </li>
+          <li><strong>Link do Projeto: </strong><a href="{{projeto.link}}" style="text-decoration: none; color: var(--accent-color);" target="_blank">Ver Projeto</a></li>
+        </ul>
+      </div>
+    {% empty %}
+      <p>Nenhum projeto foi cadastrado ainda.</p>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

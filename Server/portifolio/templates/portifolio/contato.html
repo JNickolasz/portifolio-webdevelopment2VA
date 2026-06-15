@@ -1,0 +1,147 @@
+{% extends 'core/base.html' %} 
+{% load static %}
+
+{% block title %} Contato {% endblock %} 
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'portifolio/css/contato.css' %}">
+{% endblock %} 
+
+{% block content %}
+<div class="secao card">
+  <div class="card-header" style="justify-content: space-between;">
+    <h3>
+      Canais de Contato
+      <a href="#" id="btn-edit-contato" class="admin-only" style="color: var(--accent-color); font-size: 1.1rem; cursor: pointer; margin-left: 10px; vertical-align: middle;">
+        <i class="fa-solid fa-pencil"></i>
+      </a>
+    </h3>
+  </div>
+  <p style="color: #64748b; margin-bottom: 2rem;">Fique à vontade para entrar em contato através de qualquer um dos canais abaixo:</p>
+  
+  <ul class="info-list">
+    <li class="info-item">
+      <span class="info-label"><i class="fa-solid fa-envelope"></i> E-mail: </span>
+      <span class="info-value">{{dados.email}}</span>
+    </li>
+    <li class="info-item">
+      <span class="info-label"><i class="fa-brands fa-linkedin"></i> LinkedIn: </span>
+      <a href="{{dados.linked}}" class="info-value" target="_blank">{{dados.linked}}</a>
+    </li>
+    <li class="info-item">
+      <span class="info-label"><i class="fa-brands fa-github"></i> GitHub: </span>
+      <a href="{{dados.git}}" class="info-value" target="_blank">{{dados.git}}</a>
+    </li>
+  </ul>
+</div>
+
+<div class="secao card">
+  <h3>
+    Pronto para iniciar um projeto?
+    <br><p style="font-weight: 400; font-size: 1.4rem;">Envie um e-mail</p>
+  </h3>
+  <form action="" method="post" class="contato-form">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn-submit">Enviar</button>
+  </form>
+</div>
+
+<!-- Modal Editar Contato -->
+<div id="contato-modal" class="popup-overlay" style="display: none;">
+  <div class="popup-box popup-medium">
+    <h3>Editar Canais de Contato</h3>
+    <div class="form-group">
+      <label for="txt-email">E-mail:</label>
+      <input type="email" id="txt-email">
+    </div>
+    <div class="form-group">
+      <label for="txt-linkedin">LinkedIn (URL):</label>
+      <input type="url" id="txt-linkedin">
+    </div>
+    <div class="form-group">
+      <label for="txt-github">GitHub (URL):</label>
+      <input type="url" id="txt-github">
+    </div>
+    <div class="form-actions">
+      <button id="btn-salvar-contato">Salvar</button>
+      <button id="btn-cancelar-contato" class="btn-cancel">Cancelar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      const btnEditContato = document.getElementById('btn-edit-contato');
+      const modalContato = document.getElementById('contato-modal');
+      const btnCancelarContato = document.getElementById('btn-cancelar-contato');
+      const btnSalvarContato = document.getElementById('btn-salvar-contato');
+
+      if (btnEditContato) {
+          btnEditContato.addEventListener('click', function(e) {
+              e.preventDefault();
+              const token = localStorage.getItem('access_token');
+
+              fetch(API_BASE + '/api/perfil/', {
+                  method: 'GET',
+                  headers: {
+                      'Authorization': 'Bearer ' + token
+                  }
+              })
+              .then(response => {
+                  if (!response.ok) throw new Error('Erro ao carregar dados de contato.');
+                  return response.json();
+              })
+              .then(data => {
+                  document.getElementById('txt-email').value = data.email || '';
+                  document.getElementById('txt-linkedin').value = data.linked || '';
+                  document.getElementById('txt-github').value = data.git || '';
+                  modalContato.style.display = 'flex';
+              })
+              .catch(error => {
+                  window.showFeedback(error.message, 'error');
+              });
+          });
+      }
+
+      if (btnCancelarContato) {
+          btnCancelarContato.addEventListener('click', function() {
+              modalContato.style.display = 'none';
+          });
+      }
+
+      if (btnSalvarContato) {
+          btnSalvarContato.addEventListener('click', function() {
+              const token = localStorage.getItem('access_token');
+              const dados = {
+                  email: document.getElementById('txt-email').value,
+                  linked: document.getElementById('txt-linkedin').value,
+                  git: document.getElementById('txt-github').value
+              };
+
+              fetch(API_BASE + '/api/perfil/', {
+                  method: 'PATCH',
+                  headers: {
+                      'Authorization': 'Bearer ' + token,
+                      'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify(dados)
+              })
+              .then(response => {
+                  if (!response.ok) throw new Error('Erro ao atualizar contatos.');
+                  return response.json();
+              })
+              .then(data => {
+                  modalContato.style.display = 'none';
+                  window.showFeedback('Canais de contato salvos com sucesso!', 'success', function() {
+                      window.location.reload();
+                  });
+              })
+              .catch(error => {
+                  window.showFeedback(error.message, 'error');
+              });
+          });
+      }
+  });
+</script>
+{% endblock %}
