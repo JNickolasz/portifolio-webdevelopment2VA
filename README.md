@@ -33,7 +33,7 @@ Abra o terminal na pasta onde deseja organizar os projetos e clone os dois repos
 git clone https://github.com/JNickolasz/portifolio-webdevelopment2VA.git "Portifolio - DRF & Microserviço"
 
 # 2. Clonar o projeto do Microserviço
-git clone https://github.com/JNickolasz/notification-microservice.git Microserviço
+git clone https://github.com/JNickolasz/notification-microservice.git "Microserviço"
 ```
 
 ---
