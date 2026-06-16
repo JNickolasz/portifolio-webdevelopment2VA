@@ -13,6 +13,12 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 from datetime import timedelta
 from pathlib import Path
 
+import os 
+# pyrefly: ignore [missing-import]
+from dotenv.main import load_dotenv
+
+load_dotenv()
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -31,7 +37,7 @@ ALLOWED_HOSTS = []
 # --- Configuração do microserviço de notificações ---
 
 NOTIFICACAO_MS_URL = 'http://127.0.0.1:8001'
-NOTIFICACAO_MS_API_KEY = 'hash_copiado_do_admin'
+NOTIFICACAO_MS_API_KEY = os.getenv('HASH_COPIADO_DO_ADMIN')
 
 # ----------------------------------------------------
 
